@@ -1,4 +1,4 @@
-import heapq
+import heapq, sys
 from collections import defaultdict
 
 class HuffmanNode:
@@ -34,6 +34,7 @@ def generate_huffman_codes(node, code="", mapping=None):
         mapping = {}
     if node.char is not None:
         mapping[node.char] = code
+        print(f"Character: {node.char}, Code: {code}")
     if node.left:
         generate_huffman_codes(node.left, code + "0", mapping)
     if node.right:
@@ -67,3 +68,4 @@ compressed_text = compress_text(original_text)
 print("Compressed Text:", compressed_text)
 decompressed_text = decompress_text(compressed_text, build_huffman_tree(original_text))
 print("Decompressed Text:", decompressed_text)
+
